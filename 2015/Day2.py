@@ -40,12 +40,9 @@ totalRibbon = 0
 with open("Day2_input.txt", "r") as f:
     for line in f:
 
-        # Declaring the list and splitting the dimensions of the box in each line
+        # Declaring the list, splitting the dimensions of the box in each line and converting all strings in list to integers
         list = []
-        list += line.rstrip().split("x")
-
-        # Converting all strings in list to integers
-        list = [eval(i) for i in list]
+        list = [eval(i) for i in (line.rstrip().split("x"))]
 
         # Sorting the list for values to be from smallest to largest
         list = sorted(list)
