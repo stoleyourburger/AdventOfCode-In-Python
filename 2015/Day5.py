@@ -18,3 +18,13 @@ count = sum(
 )
 
 print(count)
+
+# --- PART TWO ---
+
+# And some more regex manipulations
+count = sum(
+    1
+    for k in input
+    if len(re.findall(r"([a-z]{2}).*\1", k)) and re.findall(r"([a-z]).\1", k)
+)
+print(count)
