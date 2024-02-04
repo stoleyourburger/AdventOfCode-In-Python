@@ -22,3 +22,17 @@ for line in input:
 modifiedString = re.sub(r"\\x..|\\.", "*", modifiedString)
 
 print(len(sourceString) - len(modifiedString))
+
+# --- PART TWO ---
+
+# We will be adding the extra characters to this variable in the loop
+extraChars = 0
+
+for line in input:
+    line = line.rstrip()
+
+    # Don't forget to add 2 for the surrounding quotes that each string has
+    extraChars += line.count("\\") + line.count('"') + len(line) + 2
+
+# Using the big string from part one
+print(extraChars - len(sourceString))
