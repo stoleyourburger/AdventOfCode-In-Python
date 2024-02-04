@@ -14,3 +14,19 @@ for n in range(0, 1000000):
     if result.hexdigest().startswith("00000"):
         print(result.hexdigest())
         print(key)
+
+# --- PART TWO
+
+# Same, but for 6 zeroes we iterate over bigger range
+
+# Iterating over multiple numbers
+for n in range(0, 10000000):
+
+    # For each iteration adding a new number for our known secret key
+    key = "bgvyzdsv" + str(n)
+    result = hashlib.md5(key.encode())
+
+    # Matching if the result starts with a required number of zeroes and printing the result
+    if result.hexdigest().startswith("000000"):
+        print(result.hexdigest())
+        print(key)
