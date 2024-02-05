@@ -17,3 +17,8 @@ def Run(input, steps):
 
 
 print(len(Run(input, 40)))
+
+# --- PART TWO ---
+
+# Doing the same but 50 times
+print(len(Run(input, 50)))
