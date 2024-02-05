@@ -85,3 +85,8 @@ for i, city in enumerate(citiesList):
     GetPaths(city, remainingCities, city, 0)
 
 print(min(paths, key=lambda x: x[1]))
+
+# --- PART TWO ---
+
+# Finding the longest path now. Same data, same calculations which we already done, just outputting the max value
+print(max(paths, key=lambda x: x[1]))
