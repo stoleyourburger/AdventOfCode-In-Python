@@ -52,7 +52,7 @@ def GetPaths(startCity, remainingCities, currentPath, currentDistance):
     else:
         for city in remainingCities:
 
-            # Variable for all the cities other than $city
+            # Variable for all the cities other than city
             newRemainingCities = [
                 other_city for other_city in remainingCities if other_city != city
             ]
