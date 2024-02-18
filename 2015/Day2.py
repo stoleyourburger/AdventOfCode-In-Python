@@ -1,6 +1,6 @@
 # --- PART ONE ---
 
-totalWrap = 0
+total_wrap = 0
 
 # Putting the content of the data file in the variable
 with open("Day2_input.txt", "r") as f:
@@ -17,24 +17,24 @@ with open("Day2_input.txt", "r") as f:
         height = int(list[2])
 
         # Calculating one of each sides of the box (Don't forget that there are two of each sides!)
-        sideA = length * width
-        sideB = width * height
-        sideC = height * length
+        side_a = length * width
+        side_b = width * height
+        side_c = height * length
 
         # Choosing the smallest side of the box (We will need to add it later to the box surface area)
-        smallestSide = min(sideA, sideB, sideC)
+        smallest_side = min(side_a, side_b, side_c)
 
         # Calculating the surface area by multiplying by two each of the sides + adding that smallest side of the box
-        surfaceArea = 2 * sideA + 2 * sideB + 2 * sideC + smallestSide
+        surface_area = 2 * side_a + 2 * side_b + 2 * side_c + smallest_side
 
         # Adding this box area to total Paper
-        totalWrap += surfaceArea
+        total_wrap += surface_area
 
-print(f"You need {totalWrap} sq feet of wrapping paper")
+print(f"You need {total_wrap} sq feet of wrapping paper")
 
 # --- PART TWO ---
 
-totalRibbon = 0
+total_ribbon = 0
 
 # Again we need to iterate over each of the boxes
 with open("Day2_input.txt", "r") as f:
@@ -53,7 +53,7 @@ with open("Day2_input.txt", "r") as f:
         height = int(list[2])
 
         # Calculating the ribbon for each present
-        singleRibbon = (
+        single_ribbon = (
             int(list[0])
             + int(list[0])
             + int(list[1])
@@ -61,6 +61,6 @@ with open("Day2_input.txt", "r") as f:
             + length * width * height
         )
 
-        totalRibbon += singleRibbon
+        total_ribbon += single_ribbon
 
-print(f"You need {totalRibbon} feet of ribbon")
+print(f"You need {total_ribbon} feet of ribbon")

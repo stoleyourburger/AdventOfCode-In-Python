@@ -12,7 +12,7 @@ import re
 # Of course they all could be put into one function for more compact code
 
 
-def ValidateIncrease():
+def validate_increase():
 
     for i in range(len(password) - 2):
         # Converting the chars to integers and checking if they are equal
@@ -20,7 +20,7 @@ def ValidateIncrease():
             return True
 
 
-def ValidateLetters():
+def validate_letters():
 
     if "i" not in password and "o" not in password and "l" not in password:
         return True
@@ -28,7 +28,7 @@ def ValidateLetters():
         return False
 
 
-def ValidatePairs():
+def validate_pairs():
 
     pairs = set()
     i = 0
@@ -76,74 +76,76 @@ password = "cqjxjnds"
 # -----
 
 # Reversing the password for better convenience
-reversedPassword = password[::-1]
+reversed_password = password[::-1]
 
 
-def Iterator(pwd):
+def iterator(pwd):
 
-    global reversedPassword
+    global reversed_password
     global password
 
     # Imitating a do while loop here (Needed for Part Two)
     runs = 0
 
     while (
-        not ValidateIncrease()
-        or not ValidateLetters()
-        or not ValidatePairs()
+        not validate_increase()
+        or not validate_letters()
+        or not validate_pairs()
         or runs == 0
     ):
 
         runs += 1
         # Reverse iterating over the password so we can easily perform the wrapping 'z' to 'a'
         # The password now is backwards, but it's more comfortably to loop over it.
-        for index, letter in enumerate(reversedPassword):
+        for index, letter in enumerate(reversed_password):
 
             # Checking for letter to be 'z' for wrapping
             if letter == alphabet[-1]:
                 letter = "a"
 
                 # Finding next letter in password
-                nextLetter = reversedPassword[index + 1]
+                next_letter = reversed_password[index + 1]
 
-                if nextLetter in alphabet and nextLetter != alphabet[-1]:
+                if next_letter in alphabet and next_letter != alphabet[-1]:
 
-                    # Matching a nextLetter index with the same letter from alphabet
-                    nextLetterIndex = alphabet.index(nextLetter)
+                    # Matching a next_letter index with the same letter from alphabet
+                    next_letter_index = alphabet.index(next_letter)
 
                     # Modulo 26 for circular indexing
-                    nextLetter = alphabet[(nextLetterIndex + 1) % 26]
+                    next_letter = alphabet[(next_letter_index + 1) % 26]
 
                     # Constructing a password, slicing everything around the index letter and the next letter
-                    reversedPassword = (
-                        reversedPassword[:index]
+                    reversed_password = (
+                        reversed_password[:index]
                         + letter
-                        + nextLetter
-                        + reversedPassword[index + 2 :]
+                        + next_letter
+                        + reversed_password[index + 2 :]
                     )
-                    password = reversedPassword[::-1]
+                    password = reversed_password[::-1]
                     break
 
                 # If the next letter is 'z', we skip it, since on the next iteration we will catch it with the 'if' above
-                elif nextLetter in alphabet and nextLetter == alphabet[-1]:
-                    reversedPassword = (
-                        reversedPassword[:index]
+                elif next_letter in alphabet and next_letter == alphabet[-1]:
+                    reversed_password = (
+                        reversed_password[:index]
                         + letter
-                        + nextLetter
-                        + reversedPassword[index + 2 :]
+                        + next_letter
+                        + reversed_password[index + 2 :]
                     )
-                    password = reversedPassword[::-1]
+                    password = reversed_password[::-1]
                     continue
 
             else:
                 # Just assigning next index to the letter
-                letterIndex = alphabet.index(letter)
-                newLetter = alphabet[(letterIndex + 1)]
+                letter_index = alphabet.index(letter)
+                new_letter = alphabet[(letter_index + 1)]
 
-                reversedPassword = (
-                    reversedPassword[:index] + newLetter + reversedPassword[index + 1 :]
+                reversed_password = (
+                    reversed_password[:index]
+                    + new_letter
+                    + reversed_password[index + 1 :]
                 )
-                password = reversedPassword[::-1]
+                password = reversed_password[::-1]
                 break
 
         # Printing a password
@@ -152,11 +154,11 @@ def Iterator(pwd):
     return password
 
 
-print(f"First password is: {Iterator(password)}")
+print(f"First password is: {iterator(password)}")
 # Correct answer: cqjxxyzz
 
 # --- PART TWO ---
 
 # Taking the first result and iterating once more. That's the reason I included imitation of do/while loop in code
-newPassword = Iterator(password)
+newPassword = iterator(password)
 print(f"Second password is: {newPassword}")

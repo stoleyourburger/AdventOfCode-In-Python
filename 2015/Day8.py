@@ -6,33 +6,33 @@ import re
 with open("Day8_input.txt", "r") as f:
     input = f.readlines()
 
-sourceString = ""
-modifiedString = ""
+source_string = ""
+modified_string = ""
 
 for line in input:
     line = line.rstrip()
 
     # This is going to be one big string to match another string on
-    sourceString += line
+    source_string += line
 
-    # Removing quotes and adding to the modifiedString
-    modifiedString += line[1:-1]
+    # Removing quotes and adding to the modified_string
+    modified_string += line[1:-1]
 
 # Replacing as required using regex to some random char (*)
-modifiedString = re.sub(r"\\x..|\\.", "*", modifiedString)
+modified_string = re.sub(r"\\x..|\\.", "*", modified_string)
 
-print(len(sourceString) - len(modifiedString))
+print(len(source_string) - len(modified_string))
 
 # --- PART TWO ---
 
 # We will be adding the extra characters to this variable in the loop
-extraChars = 0
+extra_chars = 0
 
 for line in input:
     line = line.rstrip()
 
     # Don't forget to add 2 for the surrounding quotes that each string has
-    extraChars += line.count("\\") + line.count('"') + len(line) + 2
+    extra_chars += line.count("\\") + line.count('"') + len(line) + 2
 
 # Using the big string from part one
-print(extraChars - len(sourceString))
+print(extra_chars - len(source_string))

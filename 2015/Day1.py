@@ -5,17 +5,17 @@ with open("Day1_input.txt", "r") as f:
     input = f.read()
 
 # Variable to count current floor
-currentFloor = 0
+current_floor = 0
 
 # Simple iteration over each char and incrementing or decrementing the counter
 for char in input:
     if char == "(":
-        currentFloor += 1
+        current_floor += 1
     elif char == ")":
-        currentFloor -= 1
+        current_floor -= 1
 
 # Showing the result in console
-print(f"Santa gets to {currentFloor} floor")
+print(f"Santa gets to {current_floor} floor")
 
 # --- PART TWO ---
 

@@ -28,7 +28,7 @@ input = json.loads(open("Day12_input.txt", "r").read())
 
 
 # Wrapping everything in a function
-def TotalNumbers(input):
+def total_numbers(input):
 
     # Comparing the input type to the dictionary type
     if type(input) == type(dict()):
@@ -39,12 +39,12 @@ def TotalNumbers(input):
             return 0
 
         # If 'red' is not inside, we map (execute) the function with input.values() to check for other types in values
-        return sum(map(TotalNumbers, input.values()))
+        return sum(map(total_numbers, input.values()))
 
     if type(input) == type(list()):
 
         # For each list recursively sum all the values
-        return sum(map(TotalNumbers, input))
+        return sum(map(total_numbers, input))
 
     # If nothing is left we return the input
     if type(input) == type(0):
@@ -53,4 +53,4 @@ def TotalNumbers(input):
     return 0
 
 
-print(f"Second number is: {TotalNumbers(input)}")
+print(f"Second number is: {total_numbers(input)}")
